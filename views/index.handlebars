@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="row">
+        {{!-- <h4 id="header center-align">Eat Das Burger!</h4> --}}
+        <div class="box">
+            <div class="bread-top">
+                <div class="seeds"></div>
+                <div class="seeds2"></div>
+            </div>
+            <div class="salad"></div>
+            <div class="salad"></div>
+            <div class="bacon"></div>
+            <div class="cheese"></div>
+            <div class="cheese"></div>
+            <p class="center-align"> EAT DAS BURGER </p>
+            <div class="meat"></div>
+            <div class="bread-bottom"></div>
+        </div>
+
+        <br><br><br>
+        <div class="row">
+
+            <div class="col l6 m12 s12">
+                <div class="card-horizontal">
+                    <div class="card-stacked">
+                        <div class="buttons col s12">
+                            {{#each burgers}}
+                            {{#unless this.is_devoured}}
+
+                            <form action="/burgers/{{this.burger_id}}" method="POST">
+                                <button class="btn newBurgs waves-effect waves-purple col s3 m6 l12 z-depth 5  hoverable burgbtn"
+                                    type="submit" name="action">{{this.burger_name}}</button>
+                            </form>
+                            {{/unless}}
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-horizontal white col s12 l6 z-depth 5">
+                <form action="/burgers/create" method="POST">
+                    <div class="input-field col s12 addBurger">
+                        <input placeholder="" type="text" class="addBurger" name="addBurger" required="" area-required="true"
+                            oninvalid="this.setCustomValidity('Please Enter a Burger')" oninput="setCustomValidity('')"></input>
+                        <div class="row">
+                            <button class="btn waves-effect waves-light burgButton col offset-s3 s6" type="submit" name="action">Add
+                                <i class="large material-icons">add</i>
+                            </button>
+                        </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="card-horizontal small h-25 col s12 offset-l3 l6 m12 z-depth-5">
+                <h4 class="center-align devourHead"> Devoured Burgers </h4>
+                <div class="card content">
+                    <div class="buttons col s12">
+                        {{#each burgers}}
+                        {{#if this.is_devoured}}
+                        {{#unless this.is_deleted}}
+                        <form action="/delete/{{this.burger_id}}" method="POST">
+                            <button class="btn waves-effect waves-purple eatenBurgs col s12 z-depth-5 hoverable tool-tipped"
+                                type="submit" name="action">{{this.burger_name}}
+                                <i class="large material-icons">delete_forever</i>
+                                 </button>
+                        </form>
+
+                        {{/unless}}
+                        {{/if}}
+                        {{/each}}
+                    </div>
+                    <div class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
