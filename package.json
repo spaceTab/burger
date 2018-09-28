@@ -4,7 +4,7 @@
   "description": "### Requirements: * [VirtualBox](https://www.virtualbox.org/wiki/Downloads) * [Vagrant](https://www.vagrantup.com/downloads.html)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
