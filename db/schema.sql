@@ -9,6 +9,6 @@ CREATE TABLE burgers (
     is_devoured BOOLEAN DEFAULT false NOT NULL, 
     is_deleted  BOOLEAN DEFAULT false NOT NULL,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP --updates timestamp on each 'devouring'
-
+    
     PRIMARY KEY ( burger_id )
 )
