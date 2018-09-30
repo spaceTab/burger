@@ -1,18 +1,16 @@
 require('dotenv').config()
 const mysql = require("mysql");
-const connection;
+let connection;
 //creating db for burger_db
-
-=
 
 if (process.env.JAWSDB_URL) {
     connection.mysql.createConnection(process.env.JAWSDB_URL);
 } else {
-    const connect = mysql.createConnection({
+    connection = mysql.createConnection({
         host:     "localhost",
         port:     "3306", 
         user:     "root", 
-        password: "SuperSecretPasswordHere",
+        password:  process.env.DB_PASS,//"SuperSecretPasswordHere",
         database: "burger_db" 
     });
 }
@@ -20,7 +18,7 @@ if (process.env.JAWSDB_URL) {
 connection.connect( error => {
     if (error) throw error;
 
-    console.log(`connection made => ${connect.threadId}`);
+    console.log(`connection made => ${connection.threadId}`);
 });
 
-module.exports = connect;
+module.exports = connection;
